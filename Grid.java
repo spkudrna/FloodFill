@@ -17,74 +17,53 @@ public class Grid
          Pair start = new Pair(row, column, count+=1);
          pairs.push(start);
          
-         //Pair temp = new Pair(0,0,0);
-         
-         //p.push(new Pair (x,y,count);
+         Pair temp = new Pair(0,0,0);
          
          int rowNum = pairs.peek().getRow();
          int columnNum = pairs.peek().getColumn();
-         pixels[rowNum][columnNum] = pairs.peek().getVal();
+         pixels[rowNum][columnNum] = count;
          
-     while (count <16 )
+     while (count <100 )
      {
-     
-         //temp = pairs.pop();    
-             
+         //Middle Num
+         temp = pairs.pop();
          
          //North
-         
-         //Changes coordinates even if fill
-         pairs.peek().setRow(rowNum-1);
-         pairs.peek().setColumn(columnNum);
-         if (rowNum -1 >= 0  && pixels[rowNum - 1][columnNum] == 0)
-         {
-             pairs.push(new Pair (rowNum -1, columnNum, ++count));
-             pixels[rowNum-1][columnNum] = pairs.peek().getVal();
+         if (temp.getRow() -1 >= 0  && pixels[temp.getRow() - 1][temp.getColumn()] == 0)
+         { 
+             pairs.push(new Pair (temp.getRow() -1, temp.getColumn(), ++count));
+             pixels[temp.getRow()-1][temp.getColumn()] = count;
          }
          
          
          //East
-         rowNum = pairs.peek().getRow();
-         columnNum = pairs.peek().getColumn();
          
-         //Changes coordinates even if fill
-         pairs.peek().setRow(rowNum+1);
-         pairs.peek().setColumn(columnNum+1);
-         if (  rowNum+1 <=pixels.length &&  columnNum +1 <=pixels[0].length  && pixels[rowNum +1][columnNum + 1] == 0)
+          
+         if (  temp.getRow() <=pixels.length &&  temp.getColumn() +1 <pixels[0].length  && pixels[temp.getRow()][temp.getColumn() + 1] == 0)
          {
-             pairs.push(new Pair (rowNum + 1,columnNum +1, ++count));
-             pixels[rowNum +1][columnNum + 1] = pairs.peek().getVal();
+             pairs.push(new Pair (temp.getRow() ,temp.getColumn() +1, ++count));
+             pixels[temp.getRow()][temp.getColumn() + 1] = count;
          }
          
          //South
-         rowNum = pairs.peek().getRow();
-         columnNum = pairs.peek().getColumn();
          
-         //Changes coordinates even if fill
-         pairs.peek().setRow(rowNum+1);
-         pairs.peek().setColumn(columnNum-1);
-         if (rowNum +1 < pixels.length && columnNum-1 >=0 && pixels[rowNum + 1][columnNum -1 ] == 0)
+         
+         if (temp.getRow() +1 < pixels.length && pixels[temp.getRow() + 1][temp.getColumn()] == 0)
          {
-             pairs.push(new Pair (rowNum + 1, columnNum - 1, ++count));
-             pixels[rowNum + 1][columnNum -1] = pairs.peek().getVal();
+             pairs.push(new Pair (temp.getRow() + 1, temp.getColumn(), ++count));
+             pixels[temp.getRow() + 1][temp.getColumn()] = count;
          }
     
          
          //West
-         rowNum = pairs.peek().getRow();
-         columnNum = pairs.peek().getColumn();
          
-        //Changes coordinates even if fill
-         pairs.peek().setRow(rowNum-1);
-         pairs.peek().setColumn(columnNum-1);
-         if (rowNum -1 >= 0 && columnNum -1 >= 0 && pixels[rowNum - 1][columnNum - 1] == 0)
-         {
-             pairs.push(new Pair (rowNum -1, columnNum - 1, ++count));
-             pixels[rowNum - 1][columnNum - 1] = pairs.peek().getVal();
+         
+         if (temp.getRow() >= 0 && temp.getColumn() -1 >= 0 && pixels[temp.getRow()][temp.getColumn() - 1] == 0)
+         { 
+             pairs.push(new Pair (temp.getRow(), temp.getColumn() - 1, ++count));
+             pixels[temp.getRow()][temp.getColumn() - 1] = count;
          }
          
-         rowNum = pairs.peek().getRow();
-         columnNum = pairs.peek().getColumn();
          
       }
    } 
