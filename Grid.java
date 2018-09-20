@@ -2,7 +2,7 @@ import java.util.Set;
 import java.util.Stack;
 public class Grid
 {
-   private static final int SIZE = 10;
+   private static final int SIZE =10 ;
    int[][] pixels = new int[SIZE][SIZE];
    Stack <Pair> pairs = new Stack<>();
    int count = 0;
@@ -35,10 +35,7 @@ public class Grid
              pixels[temp.getRow()-1][temp.getColumn()] = count;
          }
          
-         
          //East
-         
-          
          if (  temp.getRow() <=pixels.length &&  temp.getColumn() +1 <pixels[0].length  && pixels[temp.getRow()][temp.getColumn() + 1] == 0)
          {
              pairs.push(new Pair (temp.getRow() ,temp.getColumn() +1, ++count));
@@ -46,25 +43,18 @@ public class Grid
          }
          
          //South
-         
-         
          if (temp.getRow() +1 < pixels.length && pixels[temp.getRow() + 1][temp.getColumn()] == 0)
          {
              pairs.push(new Pair (temp.getRow() + 1, temp.getColumn(), ++count));
              pixels[temp.getRow() + 1][temp.getColumn()] = count;
          }
-    
-         
+   
          //West
-         
-         
          if (temp.getRow() >= 0 && temp.getColumn() -1 >= 0 && pixels[temp.getRow()][temp.getColumn() - 1] == 0)
          { 
              pairs.push(new Pair (temp.getRow(), temp.getColumn() - 1, ++count));
              pixels[temp.getRow()][temp.getColumn() - 1] = count;
          }
-         
-         
       }
    } 
         
