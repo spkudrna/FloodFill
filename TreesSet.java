@@ -1,4 +1,4 @@
-/**
+
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Scanner;
@@ -48,4 +48,4 @@ public class TreesSet
     }
 }
 
-/**/
+
