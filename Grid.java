@@ -2,7 +2,7 @@ import java.util.Set;
 import java.util.Stack;
 public class Grid
 {
-   private static final int SIZE =10 ;
+   private static final int SIZE = 10 ;
    int[][] pixels = new int[SIZE][SIZE];
    Stack <Pair> pairs = new Stack<>();
    int count = 0;
